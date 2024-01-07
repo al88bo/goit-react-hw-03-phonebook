@@ -1,0 +1,18 @@
+.contacts-form {
+  padding: 40px;
+  border: 2px solid black;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.contacts-form label {
+  margin-bottom: 5px;
+}
+.contacts-form input:nth-child(2) {
+  margin-bottom: 20px;
+}
+.contacts-form button {
+  height: 20px;
+  width: max-content;
+  margin-top: calc(20px + 15px);
+}
