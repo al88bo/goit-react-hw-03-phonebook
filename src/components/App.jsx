@@ -13,6 +13,17 @@ class App extends Component {
     filter: '',
   };
 
+  componentDidMount() {
+    const contacts = JSON.parse(localStorage.getItem(STORAGE_KEY));
+    contacts && this.setState({ contacts });
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.contacts !== prevState.contacts) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(this.state.contacts));
+    }
+  }
+
   addContact = formData => {
     const hasDuplicate = this.state.contacts.some(
       profile => profile.name.toLowerCase() === formData.name.toLowerCase()
@@ -52,17 +63,6 @@ class App extends Component {
         />
       </SectionWrapper>
     );
-  }
-
-  componentDidMount() {
-    const contacts = JSON.parse(localStorage.getItem(STORAGE_KEY));
-    contacts && this.setState({ contacts });
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    if (this.state.contacts !== prevState.contacts) {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(this.state.contacts));
-    }
   }
 }
 
