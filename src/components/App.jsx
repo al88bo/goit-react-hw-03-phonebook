@@ -59,8 +59,10 @@ class App extends Component {
     contacts && this.setState({ contacts });
   }
 
-  componentDidUpdate() {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(this.state.contacts));
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.contacts !== prevState.contacts) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(this.state.contacts));
+    }
   }
 }
 
